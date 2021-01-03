@@ -1,0 +1,106 @@
+{% extends 'index.html' %}
+        {% load static %}
+
+        {% block title %}
+          City List
+        {% endblock %}
+        {% block description %}
+            {{ setting.description }}
+        {% endblock %}
+        {% block keywords %}
+            {{ setting.keywords }}
+        {% endblock %}
+
+  
+
+      <!-- Navbar -->
+    {% block navbar %}
+     {% include 'navbar.html' %}
+    {% endblock %}
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+    {% block sidebar %}
+     {% include 'sidebar.html' %}
+    {% endblock %}
+
+  <!-- Content Wrapper. Contains page content -->
+ 
+    <!-- Content Header (Page header) -->
+         {% block content_header_title %}
+            City List
+         {% endblock %}
+         {% block content_header_breadcrumb %}
+             City List
+         {% endblock %}
+ <div class="content-wrapper">
+  {% block content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+           
+            <!-- /.card -->
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">City</h3>
+                 <div class="card-tools center"><a href="{% url 'city_add' %}" class="btn btn-primary btn-sm" >Add</a></div>
+                
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Country Name</th>
+                    <th>City Name</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for c in city%}
+                  <tr>
+                    <td>{{c.country_name}}</td>
+                    <td>{{c.city_name}}</td>
+
+                  </tr>
+                  {% endfor%}
+                
+                  
+                  </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+      
+
+ 
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+<!-- ./wrapper -->
+
+{% endblock %}
+
+ <!-- /.content-wrapper -->
+  {% block footer %}
+            {% include 'footer.html' %}
+        {% endblock %}
+
+
+

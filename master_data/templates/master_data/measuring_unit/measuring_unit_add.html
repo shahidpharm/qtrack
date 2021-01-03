@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+        {% load static %}
+
+        {% block title %}
+          Add Country
+        {% endblock %}
+        {% block description %}
+{#            {{ setting.description }}#}
+        {% endblock %}
+        {% block keywords %}
+{#            {{ setting.keywords }}#}
+        {% endblock %}
+
+  <!-- Navbar -->
+{% block navbar %}
+ {% include 'navbar.html' %}
+        {% endblock %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+   {% block sidebar %}
+ {% include 'sidebar.html' %}
+        {% endblock %}
+
+  <!-- Content Wrapper. Contains page content -->
+
+    <!-- Content Header (Page header) -->
+   {% block content_header_title %}
+            Add Measuring Unit
+         {% endblock %}
+         {% block content_header_breadcrumb %}
+             Add Measuring Unit
+         {% endblock %}
+    <div class="content-wrapper">
+     {% block content %}
+    <!-- Main content -->
+ <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+
+      <div class="card card-primary">
+            <form method="post">
+              <div class="card-header">
+                <h3 class="card-title">Add Measuring Unit</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+
+                <div class="card-body">
+                  <div class="form-group">
+                    {% csrf_token %}
+                      {{ form.as_p }}
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+      </div>
+
+          </div>
+        </div>
+      </div>
+ </section>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+<!-- ./wrapper -->
+
+{% endblock %}
+    </div>
+
+ <!-- /.content-wrapper -->
+  {% block footer %}
+            {% include 'footer.html' %}
+  {% endblock %}
+

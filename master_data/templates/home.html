@@ -1,0 +1,46 @@
+        {% extends 'index.html' %}
+        {% load static %}
+
+
+
+        {% block title %}
+           {{ setting.title }}
+        {% endblock %}
+        {% block description %}
+            {{ setting.description }}
+        {% endblock %}
+        {% block keywords %}
+            {{ setting.keywords }}
+        {% endblock %}
+
+        <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">{% block content_header_title %}{% endblock %}</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+              <li class="breadcrumb-item active">{% block content_header_breadcrumb %}{% endblock %}</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+
+{% block navbar %}
+ {% include 'navbar.html' %}
+        {% endblock %}
+
+        {% block sidebar %}
+ {% include 'sidebar.html' %}
+        {% endblock %}
+        
+        {% block content %}
+            {% include 'content.html' %}
+        {% endblock %}
+
+        {% block footer %}
+            {% include 'footer.html' %}
+        {% endblock %}

@@ -1,0 +1,101 @@
+
+{% extends 'index.html' %}
+        {% load static %}
+
+        {% block title %}
+          Add Plant
+        {% endblock %}
+        {% block description %}
+         {{ setting.description }}
+        {% endblock %}
+        {% block keywords %}
+            {{ setting.keywords }}
+        {% endblock %}
+
+  <!-- Navbar -->
+{% block navbar %}
+ {% include 'navbar.html' %}
+        {% endblock %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+   {% block sidebar %}
+ {% include 'sidebar.html' %}
+        {% endblock %}
+
+  <!-- Content Wrapper. Contains page content -->
+
+    <!-- Content Header (Page header) -->
+   {% block content_header_title %}
+            Add Plant
+         {% endblock %}
+         {% block content_header_breadcrumb %}
+             Add Plant
+         {% endblock %}
+    <div class="content-wrapper">
+
+     {% block content %}
+    <!-- Main content -->
+ <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+
+      <div class="card card-primary">
+            <form method="post" id="pForm" data-companies-url="{% url 'ajax_load_companies' %}">
+              <div class="card-header">
+                <h3 class="card-title">Add Plant</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+
+                <div class="card-body">
+                  <div class="form-group">
+                    {% csrf_token %}
+                      {{ form.as_p }}
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+      </div>
+
+          </div>
+        </div>
+      </div>
+ </section>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+<!-- ./wrapper -->
+
+{% endblock %}
+    </div>
+
+ <!-- /.content-wrapper -->
+  {% block footer %}
+            {% include 'footer.html' %}
+  {% endblock %}
+ <script>
+    $("#id_country").change(function () {
+      var url = $("#pForm").attr("data-companies-url");  // get the url of the `load_cities` view
+      var countryId = $(this).val();  // get the selected country ID from the HTML input
+        console.log(countryId);
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'country': countryId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_company").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
